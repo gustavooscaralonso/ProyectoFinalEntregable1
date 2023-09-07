@@ -1,0 +1,93 @@
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <h1 style="text-align: center;">Registro</h1>
+  <form style=" width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  " method="POST" action="/realtimeproducts">
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="text" id="title" name="title" placeholder="Titulo" required>
+    <br><br>
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="text" id="description" name="description" placeholder="Descripcion" required>
+    <br><br>
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="number" id="price" name="price" placeholder="Precio" required>
+    <br><br>
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="text" id="category" name="category" placeholder="Categoria" required>
+    <br><br>
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="text" id="thumbnail" name="thumbnail" placeholder="Imagen" required>
+    <br><br>
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="text" id="code" name="code" placeholder="Codigo" required>
+    <br><br>
+
+    <input
+      style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
+      type="number" id="stock" name="stock" placeholder="Stock" required>
+    <br><br>
+
+    <button id="buttonEnviar" type="submit"
+      style="border: 0.5px solid black; border-radius: 15px;padding:.5rem 5rem;background-color: white;cursor: pointer;">Registrar</button>
+  </form>
+  <br><br>
+  <hr>
+  <br><br>
+
+  <div>
+    <h1 style="text-align: center;">Listado</h1>
+    <div id="products" style="display: grid;grid-template-columns: 1fr 1fr;">
+      {{#each product}}
+      <div style="border: .1px solid black; border-radius: 10px;margin: 2rem;padding: 1rem;">
+        <p>Titulo: <span style="font-weight: 100;">{{this.title}}</span></p>
+        <p>Descripcion:<span style="font-weight: 100;">{{this.description}}</span></p>
+        <p>Precio: <span style="font-weight: 100;">{{this.price}}</span></p>
+        <p>Estado: <span style="font-weight: 100;">{{this.state}}</span></p>
+        <p>Categoria: <span style="font-weight: 100;">{{this.category}}</span></p>
+        <p>Imagen: <span style="font-weight: 100;">{{this.thumbnail}}</span></p>
+        <p>Codigo: <span style="font-weight: 100;">{{this.code}}</span></p>
+        <p>Stock: <span style="font-weight: 100;">{{this.stock}}</span></p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</body>
+
+{{!-- <script src="/socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const socket = io()
+    const productsDiv = document.getElementById('products');
+    const titleInput = document.getElementById('title');
+    const buttonEnviar = document.getElementById('enviarMensaje');
+
+    buttonEnviar.addEventListener('click', () => {
+      const texto = titleInput.value;
+      if (texto.trim() != "") {
+        socket.emit('agregar', texto)
+        titleInput.value = '';
+      }
+    })
+
+  })
+</script> --}}

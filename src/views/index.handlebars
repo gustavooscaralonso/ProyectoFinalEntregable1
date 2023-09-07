@@ -1,0 +1,15 @@
+<div>
+  <h1 style="text-align: center;">Listado de Productos</h1>
+  <div class="wrapper">
+    {{#each product}}
+    <div class="product">
+      <p>Titulo: <span style="font-weight: 100;">{{this.title}}</span></p>
+      <p>Descripcion: <span style="font-weight: 100;">{{this.description}}</span></p>
+      <p>Precio: <span style="font-weight: 100;">{{this.price}}</span></p>
+      <p>Categoria: <span style="font-weight: 100;">{{this.category}}</span></p>
+      <p>Imagen:<span style="font-weight: 100;"> {{this.thumbnail}}</span></p>
+      <p>Stock: <span style="font-weight: 100;">{{this.stock}}</span></p>
+    </div>
+    {{/each}}
+  </div>
+</div>

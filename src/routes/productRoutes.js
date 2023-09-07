@@ -5,7 +5,7 @@ import fs from 'fs';
 import ProductManager from '../ProductManager.js';
 let pm = new ProductManager();
 
-router.get('/api/products', async (req, res) => {
+router.get('/', async (req, res) => {
     let limit = req.query.limit;
     if (!limit) {
         try {
@@ -37,18 +37,16 @@ router.get('/:id', async (req, res) => {
 
 router.post('/product', async (req, res) => {
     const { title, description, price, state, category, thumbnail, code, stock } = req.body;
-    console.log(req.body.description);
-    if (title, description, price, state, category, thumbnail, code, stock === (undefined || null)) {
-        console.log("Por favor, complete todos los campos");
-        return
+
+    if (title === undefined || description === undefined || price === undefined || state === undefined || category === undefined || thumbnail === undefined || code === undefined || stock === undefined) {
+        res.status(404).json({ message: 'Complete todos los campos' });
+        return;
     }
 
     try {
         pm.addProduct(title, description, price, state, category, thumbnail, code, stock)
         res.status(200).json({ message: 'Producto agregado correctamente' });
 
-        /* const products = await pm.addProduct()
-        res.json(products); */
     } catch (error) {
         res.status(500).json({ error: 'Error al generar el producto' });
     }
