@@ -1,35 +1,57 @@
 [
   {
     "id": 1,
-    "title": "Titulo 1",
+    "title": "Producto prueba 1",
     "description": "Descripcion producto 1",
-    "price": "45",
+    "price": 45,
     "state": true,
     "category": "categoria prueba",
     "thumbnail": "Sin Imagen",
-    "code": "asd123",
+    "code": "asd121",
     "stock": "12"
   },
   {
     "id": 2,
-    "title": "Titulo 2",
+    "title": "Producto prueba 2",
     "description": "Descripcion producto 2",
-    "price": "78",
+    "price": 78,
     "state": true,
     "category": "categoria prueba",
     "thumbnail": "Sin Imagen",
-    "code": "asf456",
+    "code": "asd122",
     "stock": "84"
   },
   {
     "id": 3,
-    "title": "Titulo 3",
+    "title": "Producto prueba 3",
     "description": "Descripcion producto 3",
-    "price": "578",
+    "price": 578,
     "state": true,
-    "category": "categoria prueba",
+    "category": "Sample Category",
     "thumbnail": "Sin Imagen",
-    "code": "as57f456",
+    "code": "asd123",
     "stock": "58"
+  },
+  {
+    "id": 4,
+    "title": "Producto prueba 4",
+    "description": "Sample Description",
+    "price": 1,
+    "state": true,
+    "category": "Sample Category",
+    "thumbnail": "Sin Imagen",
+    "code": "asd124",
+    "stock": "23"
+  },
+  {
+    "id": 5,
+    "title": "Producto prueba 5",
+    "description": "Sample Description",
+    "price": 56,
+    "state": true,
+    "category": "Sample Category",
+    "thumbnail": "Sin Imagen",
+    "code": "asd127",
+    "stock": 58
   }
 ]

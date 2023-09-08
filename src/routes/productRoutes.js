@@ -36,15 +36,27 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/product', async (req, res) => {
-    const { title, description, price, state, category, thumbnail, code, stock } = req.body;
+    const { title, description, price, state = true, category, thumbnail, code, stock } = req.body;
 
-    if (title === undefined || description === undefined || price === undefined || state === undefined || category === undefined || thumbnail === undefined || code === undefined || stock === undefined) {
+    const priceInt = parseInt(price)
+    const stockInt = parseInt(stock)
+
+    if (!title || !description || !price || !state || !category || !thumbnail || !code || !stock) {
         res.status(404).json({ message: 'Complete todos los campos' });
         return;
     }
 
     try {
-        pm.addProduct(title, description, price, state, category, thumbnail, code, stock)
+        const products = JSON.parse(fs.readFileSync('product.json'));
+        const existingProduct = products.some(element => {
+            return element.code === code
+        })
+        if (existingProduct) {
+            console.log(`Código ${code} ya existente`);
+            res.status(500).json({ error: `Código ${code} ya existente` });
+            return;
+        }
+        pm.addProduct(title, description, priceInt, state, category, thumbnail, code, stockInt)
         res.status(200).json({ message: 'Producto agregado correctamente' });
 
     } catch (error) {

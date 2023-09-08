@@ -17,7 +17,7 @@ class ProductManager {
 
     addProduct(title, description, price, state = true, category, thumbnail, code, stock) {
 
-        if (title, description, price, state, category, thumbnail, code, stock === (undefined || null)) {
+        if (title, description, price, state, category, thumbnail, code, stock === (undefined || null || "")) {
             console.log("Por favor, complete todos los campos");
             return
         }
