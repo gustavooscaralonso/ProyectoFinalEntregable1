@@ -1,6 +1,8 @@
 import express from 'express';
 import fs from 'fs';
 import { addCart, addProduct, } from '../utils/cartOperations.js';
+import { CartManager } from '../classes/CartManager.js';
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -11,11 +13,12 @@ router.get('/', (req, res) => {
     res.status(404).json({ error: "No se encontraron carritos guardados" });
     console.log(error);
   }
-})
+});
 
 router.get('/:cid', (req, res) => {
+  const cm = new CartManager();
   let cartId = req.params.cid
-  const carts = JSON.parse(fs.readFileSync('./carts.json'));
+  const carts = cm.getProductsByCartId()
 
   const cart = carts.find(cart => cart.cartId == cartId)
 
@@ -27,12 +30,14 @@ router.get('/:cid', (req, res) => {
 })
 
 router.post('/cart', (req, res) => {
+  const cm = new CartManager();
   let products = req.body
-  addCart(products)
+  cm.addCart(products)
   res.send(products)
 })
 
 router.post('/:cid/product/:pid', (req, res) => {
+  const cm = new CartManager();
   let cartId = parseInt(req.params.cid)
   let productId = parseInt(req.params.pid)
   let quantity = req.body[0].quantity

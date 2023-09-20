@@ -1,4 +1,7 @@
-/* const socket = io();
+const socket = io();
+import ProductManager from '../ProductManager.js';
+let pm = new ProductManager();
+
 
 socket.on('actualizar-productos', (productos) => {
   const productsDiv = document.getElementById('products');
@@ -14,4 +17,4 @@ socket.on('actualizar-productos', (productos) => {
     });
   }
 
-}) */
+})

@@ -7,8 +7,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  " method="POST" action="/api/products/product">
-
+  " method="POST" action="/api/products/">
+    {{!-- method="POST" action="/api/products/" --}}
     <input
       style="border: none; border-bottom: .5px solid rgb(169, 169, 169); width: 90%;height: 30px;margin:0 0.5rem;outline: none;"
       type="text" id="title" name="title" placeholder="Titulo">
@@ -70,7 +70,7 @@
   </div>
 </body>
 
-{{!-- <script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 
@@ -78,16 +78,40 @@
   document.addEventListener('DOMContentLoaded', () => {
     const socket = io()
     const productsDiv = document.getElementById('products');
+    const buttonEnviar = document.getElementById('buttonEnviar');
+
     const titleInput = document.getElementById('title');
-    const buttonEnviar = document.getElementById('enviarMensaje');
+    const descriptionInput = document.getElementById('description');
+    const priceInput = document.getElementById('price');
+    const categoryInput = document.getElementById('category');
+    const thumbnailInput = document.getElementById('thumbnail');
+    const codeInput = document.getElementById('code');
+    const stockInput = document.getElementById('stock');
 
     buttonEnviar.addEventListener('click', () => {
-      const texto = titleInput.value;
+      const title = titleInput.value;
+      const description = descriptionInput.value;
+      const price = priceInput.value;
+      const category = categoryInput.value;
+      const thumbnail = thumbnailInput.value;
+      const code = codeInput.value;
+      const stock = stockInput.value;
+
+      const newProduct = {
+        title,
+        description,
+        price,
+        category,
+        thumbnail,
+        code,
+        stock
+      }
+
       if (texto.trim() != "") {
-        socket.emit('agregar', texto)
+        socket.emit('agregar', newProduct)
         titleInput.value = '';
       }
     })
 
   })
-</script> --}}
+</script>

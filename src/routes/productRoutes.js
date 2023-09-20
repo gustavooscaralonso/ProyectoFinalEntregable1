@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/product', async (req, res) => {
+router.post('/', async (req, res) => {
     const { title, description, price, state = true, category, thumbnail, code, stock } = req.body;
 
     const priceInt = parseInt(price)

@@ -6,11 +6,14 @@ import __dirname from "./pathsConfig.js";
 import viewRouter from "./routes/views.router.js";
 import { Server } from "socket.io";
 import fs from 'fs'
+import ProductManager from './ProductManager.js';
+let pm = new ProductManager();
+
 
 const app = express();
 const httpServer = app.listen(8080, () => console.log('Servidor corriendo en puerto 8080'));
 
-//const socketServer = new Server(httpServer)
+const socketServer = new Server(httpServer)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,16 +27,30 @@ app.use('/', viewRouter)
 app.use('/api/carts', cartRoutes)
 app.use('/api/products', productRoutes)
 
-/* const products = JSON.parse(fs.readFileSync('product.json'));
+const products = await pm.getProducts()
+//const products = JSON.parse(fs.readFileSync('product.json'));
 socketServer.on('connection', socket => {
 
   socket.emit('actualizar-productos', products)
 
-  socket.on('agregar', (texto) => {
-    const productoAgregado = { producto: texto }
+  socket.on('agregar', (newProduct) => {
+
+    const { title, description, price, category, thumbnail, code, stock } = newProduct;
+
+    const productoAgregado = {
+      Titulo: title,
+      Descripcion: description,
+      Precio: price,
+      Estado: true,
+      Categoria: category,
+      Imagen: thumbnail,
+      Codigo: code,
+      Stock: stock
+    }
     products.push(productoAgregado)
+    console.log(productoAgregado);
+
     socketServer.emit('actualizar-productos', products)
 
   })
 })
- */

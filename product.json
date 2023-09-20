@@ -8,7 +8,7 @@
     "category": "categoria prueba",
     "thumbnail": "Sin Imagen",
     "code": "asd121",
-    "stock": "12"
+    "stock": 2
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "category": "categoria prueba",
     "thumbnail": "Sin Imagen",
     "code": "asd122",
-    "stock": "84"
+    "stock": 84
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "category": "Sample Category",
     "thumbnail": "Sin Imagen",
     "code": "asd123",
-    "stock": "58"
+    "stock": 58
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "category": "Sample Category",
     "thumbnail": "Sin Imagen",
     "code": "asd124",
-    "stock": "23"
+    "stock": 23
   },
   {
     "id": 5,
@@ -53,5 +53,27 @@
     "thumbnail": "Sin Imagen",
     "code": "asd127",
     "stock": 58
+  },
+  {
+    "id": 6,
+    "title": "titulo",
+    "description": "asd",
+    "price": 5,
+    "state": true,
+    "category": "asd",
+    "thumbnail": "asd",
+    "code": "54",
+    "stock": 4
+  },
+  {
+    "id": 7,
+    "title": "Prod",
+    "description": "descripcion",
+    "price": 456,
+    "state": true,
+    "category": "Sample Category",
+    "thumbnail": "Sin Imagen",
+    "code": "qwe789",
+    "stock": 78
   }
 ]
