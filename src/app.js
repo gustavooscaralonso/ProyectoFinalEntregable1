@@ -1,19 +1,17 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
-import productRoutes from './routes/productRoutes.js'
-import cartRoutes from './routes/cartRoutes.js'
+import productRoutes from './routes/products.router.js'
+import cartRoutes from './routes/carts.router.js'
 import __dirname from "./pathsConfig.js";
 import viewRouter from "./routes/views.router.js";
 import { Server } from "socket.io";
-import fs from 'fs'
-import ProductManager from './ProductManager.js';
-let pm = new ProductManager();
-
+import mongoose from "mongoose";
 
 const app = express();
 const httpServer = app.listen(8080, () => console.log('Servidor corriendo en puerto 8080'));
 
-const socketServer = new Server(httpServer)
+//export const socketServer = new Server(httpServer)
+export const io = new Server(httpServer);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,34 +21,32 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + "/public"));
 
-app.use('/', viewRouter)
-app.use('/api/carts', cartRoutes)
-app.use('/api/products', productRoutes)
+app.use('/', viewRouter);
+app.use('/api/carts', cartRoutes);
+app.use('/api/products', productRoutes);
 
-const products = await pm.getProducts()
-//const products = JSON.parse(fs.readFileSync('product.json'));
-socketServer.on('connection', socket => {
+try {
+  await mongoose.connect('mongodb+srv://gustavoarctic:vkIEmeZkdkBFZXhy@cluster0.wymgg06.mongodb.net/CoderHouse?retryWrites=true');
+  console.log('DB connected');
 
-  socket.emit('actualizar-productos', products)
+} catch (error) {
+  console.log('ERROR: ' + error.message);
+}
 
-  socket.on('agregar', (newProduct) => {
+let messages = [];
 
-    const { title, description, price, category, thumbnail, code, stock } = newProduct;
+io.on('connection', socket => {
+  console.log('Nuevo cliente conectado');
 
-    const productoAgregado = {
-      Titulo: title,
-      Descripcion: description,
-      Precio: price,
-      Estado: true,
-      Categoria: category,
-      Imagen: thumbnail,
-      Codigo: code,
-      Stock: stock
-    }
-    products.push(productoAgregado)
-    console.log(productoAgregado);
+  socket.on('authenticate', () => {
+    socket.emit('messageLogs', messages)
+  });
 
-    socketServer.emit('actualizar-productos', products)
+  socket.on('message', data => {
+    messages.push(data);
+    io.emit('messageLogs', messages)
+  });
 
-  })
-})
+  socket.broadcast.emit('userConnected', { user: 'Nuevo usuario conectado' })
+});
+
