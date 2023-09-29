@@ -2,11 +2,16 @@ import express from "express";
 const router = express.Router();
 import fs from 'fs'
 import ProductManager from '../dao/fileManagers/ProductManager.js';
-let pm = new ProductManager();
+import { productsModel } from "../dao/models/products.model.js";
 
-const products = JSON.parse(fs.readFileSync('product.json'));
 
-router.get('/', (req, res) => {
+//const products = JSON.parse(fs.readFileSync('product.json'));
+
+
+router.get('/', async (req, res) => {
+  const productsList = await productsModel.find();
+  const products = productsList.map(product => product.toObject());
+
   res.render('index',
     {
       style: 'index.css',
@@ -15,7 +20,9 @@ router.get('/', (req, res) => {
   )
 });
 
-router.get('/realtimeproducts', (req, res) => {
+router.get('/realtimeproducts', async (req, res) => {
+  const productsList = await productsModel.find();
+  const products = productsList.map(product => product.toObject());
   res.render('realtimeproducts',
     {
       style: 'index.css',

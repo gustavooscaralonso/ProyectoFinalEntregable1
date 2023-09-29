@@ -2,37 +2,39 @@ const socket = io();
 let user;
 let chatBox = document.getElementById('chatBox')
 
-Swal.fire({
-  title: "Identificate",
-  input: "text",
-  text: "nick",
-  inputValidator: (value) => {
-    return !value && "ingresa tu nick"
-  },
-  allowOutsideClick: false
-}).then(result => {
-  user = result.value;
+if (window.location.href === 'http://localhost:8080/chat') {
+  Swal.fire({
+    title: "Identificate",
+    input: "text",
+    text: "nick",
+    inputValidator: (value) => {
+      return !value && "ingresa tu nick"
+    },
+    allowOutsideClick: false
+  }).then(result => {
+    user = result.value;
 
-  socket.emit('authenticate');
+    socket.emit('authenticate');
 
-  socket.on('messageLogs', data => {
-    let log = document.getElementById('messageLogs');
-    let messages = '';
-    data.forEach(message => {
-      messages = messages + `${message.user} dice: ${message.message}</br>`;
-    });
-    log.innerHTML = messages;
-  })
-});
+    socket.on('messageLogs', data => {
+      let log = document.getElementById('messageLogs');
+      let messages = '';
+      data.forEach(message => {
+        messages = messages + `${message.user} dice: ${message.message}</br>`;
+      });
+      log.innerHTML = messages;
+    })
+  });
 
-chatBox.addEventListener('keyup', evt => {
-  if (evt.key === "Enter") {
-    if (chatBox.value.trim().length > 0) {
-      socket.emit('message', { user: user, message: chatBox.value })
-      chatBox.value = ''
+  chatBox.addEventListener('keyup', evt => {
+    if (evt.key === "Enter") {
+      if (chatBox.value.trim().length > 0) {
+        socket.emit('message', { user: user, message: chatBox.value })
+        chatBox.value = ''
+      }
     }
-  }
-});
+  })
+};
 
 socket.on('messageLogs', data => {
   let log = document.getElementById('messageLogs');
@@ -50,7 +52,6 @@ socket.on('userConnected', data => {
     position: "top-right"
   });
 });
-
 
 
 
