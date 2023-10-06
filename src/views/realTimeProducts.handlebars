@@ -1,5 +1,5 @@
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  {{!-- <h1 style="text-align: center;">Registro</h1> --}}
+  <h1 style="text-align: center;">Registro</h1>
   <form style=" width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -46,27 +46,27 @@
     <button id="buttonEnviar" type="submit"
       style="border: 0.5px solid black; border-radius: 15px;padding:.5rem 5rem;background-color: white;cursor: pointer;">Registrar</button>
   </form>
-  {{!--  <br><br>
+  <br><br>
   <hr>
-  <br><br> --}}
+  <br><br>
 
-  {{!-- <div> --}}
-  {{!--  <h1 style="text-align: center;">Listado</h1> --}}
-  <div id="products" style="display: grid;grid-template-columns: 1fr 1fr;">
-    {{#each product}}
-    <div class="product" style="border: .1px solid black; border-radius: 10px;margin: 2rem;padding: 1rem;">
-      <p>Titulo: <span style="font-weight: 100;">{{this.title}}</span></p>
-      <p>Descripcion: <span style="font-weight: 100;">{{this.description}}</span></p>
-      <p>Precio: <span style="font-weight: 100;">{{this.price}}</span></p>
-      <p>Estado: <span style="font-weight: 100;">{{this.state}}</span></p>
-      <p>Categoria: <span style="font-weight: 100;">{{this.category}}</span></p>
-      <p>Imagen: <span style="font-weight: 100;">{{this.thumbnail}}</span></p>
-      <p>Codigo: <span style="font-weight: 100;">{{this.code}}</span></p>
-      <p>Stock: <span style="font-weight: 100;">{{this.stock}}</span></p>
+  <div>
+    <h1 style="text-align: center;">Listado</h1>
+    <div id="products" style="display: grid;grid-template-columns: 1fr 1fr;">
+      {{#each product}}
+      <div class="product" style="border: .1px solid black; border-radius: 10px;margin: 2rem;padding: 1rem;">
+        <p>Titulo: <span style="font-weight: 100;">{{this.title}}</span></p>
+        <p>Descripcion: <span style="font-weight: 100;">{{this.description}}</span></p>
+        <p>Precio: <span style="font-weight: 100;">{{this.price}}</span></p>
+        <p>Estado: <span style="font-weight: 100;">{{this.state}}</span></p>
+        <p>Categoria: <span style="font-weight: 100;">{{this.category}}</span></p>
+        <p>Imagen: <span style="font-weight: 100;">{{this.thumbnail}}</span></p>
+        <p>Codigo: <span style="font-weight: 100;">{{this.code}}</span></p>
+        <p>Stock: <span style="font-weight: 100;">{{this.stock}}</span></p>
+      </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
-  {{!-- </div> --}}
+    {{!-- </div> --}}
 </body>
 
 <script src="/socket.io/socket.io.js"></script>

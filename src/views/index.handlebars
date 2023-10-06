@@ -1,7 +1,7 @@
 <div>
   <h1 style="text-align: center;">Listado de Productos</h1>
   <div class="wrapper">
-    {{#each product}}
+    {{#each result.docs}}
     <div class="product">
       <p>Titulo: <span style="font-weight: 100;">{{this.title}}</span></p>
       <p>Descripcion: <span style="font-weight: 100;">{{this.description}}</span></p>
@@ -9,10 +9,28 @@
       <p>Categoria: <span style="font-weight: 100;">{{this.category}}</span></p>
       <p>Imagen:<span style="font-weight: 100;"> {{this.thumbnail}}</span></p>
       <p>Stock: <span style="font-weight: 100;">{{this.stock}}</span></p>
+
+      <form method="post" action="/api/carts/cart">
+        <button>Agregar al carrito</button>
+      </form>
     </div>
+
     {{/each}}
   </div>
+  <div style="border: 1px solid black;">
+    {{#if result.hasPrevPage}}
+    <a href={{this.result.prevLink}}>
+      Anterior</a>
+    {{/if}}
+    &nbsp;
+    {{this.result.page}}
+    &nbsp;
+    {{#if result.hasNextPage}}
+    <a href={{this.result.nextLink}}>Siguiente</a>
+    {{/if}}
+  </div>
 </div>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/index.js"></script>

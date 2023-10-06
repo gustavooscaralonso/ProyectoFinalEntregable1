@@ -4,13 +4,16 @@ import fs from 'fs';
 import { io } from '../app.js';
 import ProductManager from '../dao/fileManagers/ProductManager.js';
 import Products from '../dao/dbManagers/products.manager.js';
+import { productsModel } from '../dao/models/products.model.js';
 
 let pm = new ProductManager();
 const productsManager = new Products();
 
 
-router.get('/', async (req, res) => {
-    let limit = req.query.limit;
+/* router.get('/', async (req, res) => {
+    const productsDB = await productsManager.getAll();
+
+    let limit = req.query.limit || 11;
     if (!limit) {
         try {
             const productsDB = await productsManager.getAll();
@@ -21,6 +24,10 @@ router.get('/', async (req, res) => {
             res.status(500).json({ error: 'Error al leer el archivo' });
         }
     } else {
+        const productsDB = await productsManager.paginate({}, { limit: 10, page: 1 });
+        console.log(JSON.stringify(productsDB, null, '\t'));
+
+        res.send(productsDB)
         const products = await pm.getProducts()
         let limitedProducts = products.slice(0, 5)
         console.log(limitedProducts);
@@ -28,7 +35,7 @@ router.get('/', async (req, res) => {
         res.send(limitedProducts)
     }
 })
-
+ */
 router.get('/:id', async (req, res) => {
     let productId = req.params.id
 
@@ -42,6 +49,8 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: 'El producto no existe' });
     }
 })
+
+
 
 router.post('/', async (req, res) => {
     const { title, description, price, state = true, category, thumbnail, code, stock } = req.body;

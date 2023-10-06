@@ -6,6 +6,7 @@ import __dirname from "./pathsConfig.js";
 import viewRouter from "./routes/views.router.js";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+import { productsModel } from './dao/models/products.model.js';
 
 const app = express();
 const httpServer = app.listen(8080, () => console.log('Servidor corriendo en puerto 8080'));
@@ -29,6 +30,7 @@ try {
   await mongoose.connect('mongodb+srv://gustavoarctic:vkIEmeZkdkBFZXhy@cluster0.wymgg06.mongodb.net/CoderHouse?retryWrites=true');
   console.log('DB connected');
 
+
 } catch (error) {
   console.log('ERROR: ' + error.message);
 }
@@ -36,7 +38,6 @@ try {
 let messages = [];
 
 io.on('connection', socket => {
-  console.log('Nuevo cliente conectado');
 
   socket.on('authenticate', () => {
     socket.emit('messageLogs', messages)
@@ -49,4 +50,3 @@ io.on('connection', socket => {
 
   socket.broadcast.emit('userConnected', { user: 'Nuevo usuario conectado' })
 });
-
