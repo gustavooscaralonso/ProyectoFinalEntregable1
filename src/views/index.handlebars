@@ -1,3 +1,21 @@
+<header>
+  {{#if user.name}}
+  <div style="display: flex; justify-content:space-between;align-items:center">
+    <p>Bienvenido <span>{{user.name}}</span></p>
+    <a href="/api/sessions/logout"><button
+        style="border: 0.5px solid black; border-radius: 15px;padding:.3rem 2rem;background-color: white;cursor: pointer;">Salir</button></a>
+  </div>
+
+  {{else}}
+  <div style="display: flex; justify-content:space-between;align-items:center">
+
+    <p></p>
+    <a href="/login"><button
+        style="border: 0.5px solid black; border-radius: 15px;padding:.3rem 2rem;background-color: white;cursor: pointer;">Login</button></a>
+  </div>
+
+  {{/if}}
+</header>
 <div>
   <h1 style="text-align: center;">Listado de Productos</h1>
   <div class="wrapper">
@@ -11,22 +29,24 @@
       <p>Stock: <span style="font-weight: 100;">{{this.stock}}</span></p>
 
       <form method="post" action="/api/carts/cart">
-        <button>Agregar al carrito</button>
+        <button
+          style="border: 0.5px solid black; border-radius: 15px;padding:.3rem 2rem;background-color: white;cursor: pointer;">Agregar
+          al carrito</button>
       </form>
     </div>
 
     {{/each}}
   </div>
-  <div style="border: 1px solid black;">
+  <div style="display: flex; justify-content:center;align-items:center">
     {{#if result.hasPrevPage}}
-    <a href={{this.result.prevLink}}>
-      Anterior</a>
+    <a href={{this.result.prevLink}} style="text-decoration: none;">
+      &#60; </a>
     {{/if}}
     &nbsp;
     {{this.result.page}}
     &nbsp;
     {{#if result.hasNextPage}}
-    <a href={{this.result.nextLink}}>Siguiente</a>
+    <a href={{this.result.nextLink}} style="text-decoration: none;">&#62;</a>
     {{/if}}
   </div>
 </div>

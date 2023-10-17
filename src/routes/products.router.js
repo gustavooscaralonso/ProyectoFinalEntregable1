@@ -10,7 +10,7 @@ let pm = new ProductManager();
 const productsManager = new Products();
 
 
-/* router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     const productsDB = await productsManager.getAll();
 
     let limit = req.query.limit || 11;
@@ -24,7 +24,7 @@ const productsManager = new Products();
             res.status(500).json({ error: 'Error al leer el archivo' });
         }
     } else {
-        const productsDB = await productsManager.paginate({}, { limit: 10, page: 1 });
+        const productsDB = await productsModel.paginate({}, { limit: 10, page: 1 });
         console.log(JSON.stringify(productsDB, null, '\t'));
 
         res.send(productsDB)
@@ -35,7 +35,7 @@ const productsManager = new Products();
         res.send(limitedProducts)
     }
 })
- */
+
 router.get('/:id', async (req, res) => {
     let productId = req.params.id
 

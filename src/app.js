@@ -6,7 +6,13 @@ import __dirname from "./pathsConfig.js";
 import viewRouter from "./routes/views.router.js";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 import { productsModel } from './dao/models/products.model.js';
+import sessionsRouter from "./routes/sessions.router-bcrypt.js";
+import initializePassport from './config/passport.config.js';
+import passport from 'passport';
+
 
 const app = express();
 const httpServer = app.listen(8080, () => console.log('Servidor corriendo en puerto 8080'));
@@ -22,18 +28,31 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + "/public"));
 
-app.use('/', viewRouter);
-app.use('/api/carts', cartRoutes);
-app.use('/api/products', productRoutes);
-
 try {
   await mongoose.connect('mongodb+srv://gustavoarctic:vkIEmeZkdkBFZXhy@cluster0.wymgg06.mongodb.net/CoderHouse?retryWrites=true');
   console.log('DB connected');
-
-
 } catch (error) {
   console.log('ERROR: ' + error.message);
 }
+
+app.use(session({
+  store: MongoStore.create({
+    client: mongoose.connection.getClient(),
+    ttl: 3600
+  }),
+  secret: 'Coder47300Secret',
+  resave: true,
+  saveUninitialized: true,
+}));
+
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', viewRouter);
+app.use('/api/carts', cartRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/sessions', sessionsRouter);
 
 let messages = [];
 

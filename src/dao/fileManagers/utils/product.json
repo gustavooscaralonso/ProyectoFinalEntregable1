@@ -1,0 +1,192 @@
+[
+  {
+    "title": "Navaja Suiza",
+    "description": "Una versátil navaja multifuncional para diversas tareas de supervivencia.",
+    "price": 25.99,
+    "state": true,
+    "category": "Herramientas",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU123",
+    "stock": 50
+  },
+  {
+    "title": "Filtro de Agua Portátil",
+    "description": "Un filtro de agua compacto que purifica el agua de fuentes naturales.",
+    "price": 39.95,
+    "state": true,
+    "category": "Hidratación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU456",
+    "stock": 30
+  },
+  {
+    "title": "Brújula de Supervivencia",
+    "description": "Una brújula resistente al agua con regla incorporada y luz.",
+    "price": 12.99,
+    "state": true,
+    "category": "Navegación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU789",
+    "stock": 25
+  },
+  {
+    "title": "Encendedor a Prueba de Viento",
+    "description": "Un encendedor resistente al viento ideal para encender fuego en condiciones adversas.",
+    "price": 8.49,
+    "state": true,
+    "category": "Fuego",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU101",
+    "stock": 40
+  },
+  {
+    "title": "Manta Térmica de Emergencia",
+    "description": "Una manta ligera y aislante que refleja el calor corporal.",
+    "price": 5.99,
+    "state": true,
+    "category": "Abrigo",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU202",
+    "stock": 60
+  },
+  {
+    "title": "Linterna LED Recargable",
+    "description": "Una linterna de alta potencia con batería recargable por energía solar.",
+    "price": 29.95,
+    "state": true,
+    "category": "Iluminación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU303",
+    "stock": 35
+  },
+  {
+    "title": "Kit de Primeros Auxilios",
+    "description": "Un conjunto de suministros médicos básicos para tratar heridas y lesiones menores.",
+    "price": 14.99,
+    "state": true,
+    "category": "Seguridad",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU404",
+    "stock": 20
+  },
+  {
+    "title": "Cuerda de Paracord",
+    "description": "Una cuerda resistente hecha de paracord con múltiples usos.",
+    "price": 7.99,
+    "state": true,
+    "category": "Herramientas",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU505",
+    "stock": 70
+  },
+  {
+    "title": "Silbato de Supervivencia",
+    "description": "Un silbato que emite un sonido fuerte para pedir ayuda en caso de emergencia.",
+    "price": 2.49,
+    "state": true,
+    "category": "Seguridad",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU606",
+    "stock": 100
+  },
+  {
+    "title": "Tabletas Purificadoras de Agua",
+    "description": "Pastillas que desinfectan el agua contaminada para hacerla segura para beber.",
+    "price": 6.99,
+    "state": true,
+    "category": "Hidratación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU707",
+    "stock": 45
+  },
+  {
+    "title": "Comida enlatada de Supervivencia",
+    "description": "Comida enlatada de larga duración con alto contenido calórico.",
+    "price": 3.99,
+    "state": true,
+    "category": "Alimentación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU808",
+    "stock": 75
+  },
+  {
+    "title": "Mapa Topográfico Resistente",
+    "description": "Un mapa detallado del área con elevaciones y puntos de referencia.",
+    "price": 9.95,
+    "state": true,
+    "category": "Navegación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU909",
+    "stock": 15
+  },
+  {
+    "title": "Gafas de Sol Polarizadas",
+    "description": "Gafas de sol que protegen los ojos de la radiación UV y el deslumbramiento.",
+    "price": 18.99,
+    "state": true,
+    "category": "Protección",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1010",
+    "stock": 50
+  },
+  {
+    "title": "Herramienta Multiusos",
+    "description": "Una herramienta que incluye alicates, destornilladores, cuchillas y más.",
+    "price": 19.99,
+    "state": true,
+    "category": "Herramientas",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1111",
+    "stock": 40
+  },
+  {
+    "title": "Kit de Pesca de Supervivencia",
+    "description": "Un conjunto compacto de caña de pescar, anzuelos y línea de pesca.",
+    "price": 12.49,
+    "state": true,
+    "category": "Alimentación",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1212",
+    "stock": 30
+  },
+  {
+    "title": "Cinta Adhesiva Resistente",
+    "description": "Una cinta adhesiva que se adhiere fuertemente y es resistente al agua.",
+    "price": 3.99,
+    "state": true,
+    "category": "Herramientas",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1313",
+    "stock": 80
+  },
+  {
+    "title": "Kit de Costura Compacto",
+    "description": "Un conjunto de agujas, hilo y botones para reparaciones de ropa.",
+    "price": 5.49,
+    "state": true,
+    "category": "Herramientas",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1414",
+    "stock": 25
+  },
+  {
+    "title": "Gorra de Camuflaje",
+    "description": "Una gorra que proporciona sombra y camuflaje en entornos naturales.",
+    "price": 8.99,
+    "state": true,
+    "category": "Protección",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1515",
+    "stock": 60
+  },
+  {
+    "title": "Red de Camuflaje",
+    "description": "Una red que proporciona cobertura y camuflaje en entornos naturales.",
+    "price": 17.95,
+    "state": true,
+    "category": "Protección",
+    "thumbnail": "Sin Imagen",
+    "code": "SKU1616",
+    "stock": 20
+  }
+]
